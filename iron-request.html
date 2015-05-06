@@ -141,7 +141,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       xhr.addEventListener('readystatechange', function () {
         if (xhr.readyState === 4 && !this.aborted) {
-          this._setResponse(this.parseResponse());
+          this._setResponse(this.parseResponse(options));
           this.resolveCompletes(this.response);
         }
       }.bind(this));
@@ -184,9 +184,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       return this.completes;
     },
 
-    parseResponse: function () {
+    parseResponse: function (options) {
       var xhr = this.xhr;
-      var responseType = this.xhr.responseType ||
+      var responseType = options.handleAs || this.xhr.responseType ||
         this.xhr._responseType;
       // If we don't have a natural `xhr.responseType`, we prefer parsing
       // `xhr.responseText` over returning `xhr.response`..
