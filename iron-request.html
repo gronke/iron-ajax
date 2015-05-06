@@ -177,9 +177,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }, this);
       }
 
-      // In IE, `xhr.responseType` is an empty string when the response
-      // returns. Hence, caching it as `xhr._responseType`.
-      xhr.responseType = xhr._responseType = options.handleAs;
       xhr.withCredentials = options.withCredentials;
 
       xhr.send(options.body);
